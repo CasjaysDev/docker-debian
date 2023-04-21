@@ -1,12 +1,12 @@
 ## 👋 Welcome to debian 🚀  
 
-debian README  
 custom debian image with bash, tini, certbot installed  
+  
   
 ## Run container
 
 ```shell
-docker run casjaysdev/debian bash
+docker run --name -casjaysdev-debian casjaysdev/debian bash
 ```
   
   
@@ -20,24 +20,23 @@ docker run casjaysdev/debian bash
 ## Get source files  
 
 ```shell
-dockermgr download src debian
+dockermgr download src casjaysdev/docker-debian
 ```
 
 OR
 
 ```shell
-git clone "https://github.com/casjaysdevdocker/debian" "$HOME/Projects/github/casjaysdevdocker/debian"
+git clone "https://github.com/casjaysdev/docker-debian" "$HOME/Projects/github/casjaysdev/docker-debian"
 ```
 
 ## Build container  
 
 ```shell
-cd "$HOME/Projects/github/casjaysdevdocker/debian"
+cd "$HOME/Projects/github/casjaysdev/docker-debian"
 buildx 
 ```
 
 ## Authors  
 
-📽 dockermgr: [Github](https://github.com/dockermgr) [Docker](https://hub.docker.com/r/casjaysdevdocker) 📽  
-🤖 casjay: [Github](https://github.com/casjay) [Docker](https://hub.docker.com/r/casjay) 🤖  
-⛵ CasjaysDevDocker: [Github](https://github.com/casjaysdevdocker) [Docker](https://hub.docker.com/r/casjaysdevdocker) ⛵  
+🤖 casjay: [Github](https://github.com/casjay) 🤖  
+⛵ casjaysdev: [Github](https://github.com/casjaysdev) [Docker](https://hub.docker.com/r/casjaysdev) ⛵  
