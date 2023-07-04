@@ -3,11 +3,10 @@ ARG LICENSE="MIT"
 ARG IMAGE_NAME="debian"
 ARG LANGUAGE="en_US.UTF-8"
 ARG TIMEZONE="America/New_York"
-ARG EXPOSE_PORTS=""
 
 ARG IMAGE_REPO="debian"
-ARG IMAGE_VERSION="bookworm"
-ARG CONTAINER_VERSION="bookworm 12"
+ARG IMAGE_VERSION="bullseye"
+ARG CONTAINER_VERSION="latest 11 bullseye"
 
 ARG USER="root"
 ARG DISTRO_VERSION="${IMAGE_VERSION}"
@@ -49,7 +48,7 @@ RUN set -ex ; \
 RUN set -ex ; \
   touch "/etc/profile" "/root/.profile" ; \
   { [ -f "/etc/bash/bashrc" ] && cp -Rf "/etc/bash/bashrc" "/root/.bashrc" ; } || { [ -f "/etc/bashrc" ] && cp -Rf "/etc/bashrc" "/root/.bashrc" ; } || { [ -f "/etc/bash.bashrc" ] && cp -Rf "/etc/bash.bashrc" "/root/.bashrc" ; }; \
-  grep -s -q 'alias quit' "/root/.bashrc" || printf '# Profile\n\n%s\n%s\n' "alias q='exit'" "alias quit='exit'" >>"/root/.bashrc" ; \
+  grep -s -q 'alias quit' "/root/.bashrc" || printf '# Profile\n%s\n%s\n' "alias q='exit'" "alias quit='exit'" >>"/root/.bashrc" ; \
   sed -i 's|root:x:.*|root:x:0:0:root:/root:/bin/bash|g' "/etc/passwd" ; \
   update-alternatives --install /bin/sh sh /bin/bash 1
 
@@ -79,7 +78,6 @@ ARG LICENSE
 ARG LANGUAGE
 ARG TIMEZONE
 ARG IMAGE_NAME
-ARG EXPOSE_PORTS
 
 USER ${USER}
 WORKDIR /root
@@ -112,7 +110,6 @@ ENV TERM="xterm-256color"
 ENV CONTAINER_NAME="${IMAGE_NAME}"
 ENV HOSTNAME="${IMAGE_NAME}"
 ENV USER="${USER}"
-ENV ENV_PORTS="${EXPOSE_PORTS}"
 
 COPY --from=build /. /
 
